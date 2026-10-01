@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Greg Bot</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}html{scroll-behavior:smooth}body{color:#fff;min-height:100vh;overflow-x:hidden;background:radial-gradient(circle at 10% 10%,rgba(45,110,210,.45),transparent 30%),radial-gradient(circle at 90% 20%,rgba(100,60,210,.4),transparent 30%),radial-gradient(circle at 50% 100%,rgba(20,100,190,.35),transparent 35%),linear-gradient(135deg,#030b20,#071b3d 35%,#102b58 65%,#241052)}.dashboard{min-height:100vh;background:linear-gradient(135deg,rgba(8,25,58,.55),rgba(18,48,95,.4))}.topbar{height:76px;display:flex;align-items:center;padding:0 28px;background:rgba(3,13,31,.72);border-bottom:1px solid rgba(255,255,255,.09);backdrop-filter:blur(18px);position:sticky;top:0;z-index:500}.logo{margin-left:18px;font-size:23px;font-weight:800}.menu-btn{width:48px;height:48px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:rgba(35,82,145,.75);border:1px solid rgba(255,255,255,.1);border-radius:12px;cursor:pointer}.menu-btn span{width:23px;height:3px;background:#fff;border-radius:20px}.side-menu{position:fixed;top:0;left:-340px;width:340px;height:100vh;padding:28px 20px;background:linear-gradient(180deg,#071a39,#06132c 65%,#0b1640);border-right:1px solid rgba(255,255,255,.08);box-shadow:20px 0 60px rgba(0,0,0,.55);z-index:1000;transition:left .35s;overflow-y:auto}.side-menu.open{left:0}.menu-header{display:flex;align-items:center;gap:12px;padding:8px 5px 30px}.menu-logo{width:45px;height:45px;display:flex;align-items:center;justify-content:center;border-radius:13px;background:linear-gradient(135deg,#347fe5,#6945d6);font-size:21px;font-weight:bold}.menu-header h2{font-size:22px}.close-btn{position:absolute;right:18px;top:18px;width:38px;height:38px;border:0;background:rgba(255,255,255,.06);color:#fff;border-radius:10px;font-size:25px;cursor:pointer}.menu-label{color:#7291b8;font-size:11px;font-weight:bold;letter-spacing:1.5px;margin:18px 8px 10px;text-transform:uppercase}.menu-item{width:100%;display:flex;align-items:center;gap:12px;padding:14px 15px;margin-bottom:8px;border:1px solid transparent;border-radius:11px;background:transparent;color:#dce9fa;text-align:left;cursor:pointer;font-size:14px;font-weight:600;transition:.2s}.menu-item:hover{background:linear-gradient(90deg,rgba(46,105,180,.45),rgba(81,68,180,.2));transform:translateX(4px)}.menu-icon{width:25px;text-align:center;font-size:17px}.menu-footer{margin-top:25px;padding:16px;border-radius:13px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}.menu-footer-title{font-size:12px;color:#7fa4d2;margin-bottom:6px}.menu-footer p{font-size:12px;color:#8198b8;line-height:1.5}.overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(4px);display:none;z-index:900}.overlay.show{display:block}.welcome{max-width:1150px;margin:auto;padding:80px 28px}.welcome h1{font-size:clamp(36px,6vw,55px);line-height:1.1;margin-bottom:18px;letter-spacing:-1px;background:linear-gradient(90deg,#fff,#9bcaff,#c1a8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.welcome-description{color:#c7d8ef;max-width:800px;font-size:18px;line-height:1.7}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:50px}.card{padding:28px;min-height:180px;border-radius:18px;background:linear-gradient(145deg,rgba(25,67,125,.65),rgba(9,31,68,.75));border:1px solid rgba(255,255,255,.08);box-shadow:0 20px 40px rgba(0,0,0,.18);backdrop-filter:blur(10px);transition:.25s}.card:hover{transform:translateY(-7px);border-color:rgba(107,181,255,.35)}.card h2{margin-bottom:13px;font-size:21px}.card p{color:#b9cde8;line-height:1.6;font-size:15px}.content-section{display:none;max-width:1100px;margin:auto;padding:65px 28px 90px}.content-section h1{font-size:clamp(32px,5vw,44px);margin-bottom:14px}.content-section>p{color:#bdcee6;line-height:1.7;max-width:780px;margin-bottom:35px}.command-category{margin-top:42px;margin-bottom:16px;padding-bottom:12px;font-size:22px;border-bottom:1px solid rgba(255,255,255,.08)}.command{padding:20px 22px;margin-top:12px;border-radius:13px;background:linear-gradient(145deg,rgba(13,43,87,.75),rgba(7,27,59,.82));border:1px solid rgba(255,255,255,.06);transition:.2s}.command:hover{transform:translateX(5px);border-color:rgba(103,178,255,.28)}.command code{color:#69b4ff;font-size:16px;font-weight:bold;font-family:Consolas,monospace}.command p{color:#bdcde4;margin-top:8px;line-height:1.55}.terms-box{padding:30px;border-radius:18px;background:linear-gradient(145deg,rgba(17,53,105,.72),rgba(7,26,57,.85));border:1px solid rgba(255,255,255,.08);box-shadow:0 20px 45px rgba(0,0,0,.22)}.terms-box h2{margin:28px 0 10px;font-size:21px}.terms-box h2:first-child{margin-top:0}.terms-box p{color:#bdcde4;line-height:1.7;margin-bottom:14px}.terms-date{color:#7fa4d2!important;margin-bottom:28px!important}.agree-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:20px;padding:14px 23px;border-radius:11px;background:linear-gradient(135deg,#5865f2,#7165e8);color:#fff;text-decoration:none;font-weight:bold;transition:.25s}.agree-btn:hover{transform:translateY(-3px)}@media(max-width:600px){.topbar{padding:0 18px}.welcome{padding:55px 20px}.content-section{padding:50px 20px 70px}.side-menu{width:290px}.cards{grid-template-columns:1fr}.terms-box{padding:22px}}
+</style>
+</head>
+<body>
+
+<div class="side-menu" id="sideMenu">
+<button class="close-btn" onclick="closeMenu()">×</button>
+<div class="menu-header"><div class="menu-logo">G</div><h2>Greg Bot</h2></div>
+<div class="menu-label">Navigation</div>
+<button class="menu-item" onclick="showHome()"><span class="menu-icon">🏠</span>Home</button>
+<button class="menu-item" onclick="showCommands()"><span class="menu-icon">📋</span>All Commands</button>
+<button class="menu-item" onclick="showTerms()"><span class="menu-icon">📜</span>Terms of Service</button>
+<button class="menu-item" onclick="showAddBot()"><span class="menu-icon">➕</span>Add Bot to Server</button>
+<div class="menu-footer"><div class="menu-footer-title">GREG BOT</div><p>Discord security, moderation, monitoring, and server protection.</p></div>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<div class="dashboard">
+
+<div class="topbar">
+<button class="menu-btn" onclick="openMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+<div class="logo">Greg Bot</div>
+</div>
+
+<main class="welcome" id="welcome">
+<h1>Welcome to Greg Bot!</h1>
+<p class="welcome-description">A powerful Discord security, moderation, anti-raid, monitoring, and server protection bot built for your community.</p>
+<div class="cards">
+<div class="card"><h2>🛡️ Anti-Raid</h2><p>Detect suspicious joining activity and help protect your community from raids.</p></div>
+<div class="card"><h2>🔐 Security</h2><p>Monitor your server's security and identify potential risks.</p></div>
+<div class="card"><h2>⚙️ Automation</h2><p>Automated systems help handle server protection and moderation.</p></div>
+<div class="card"><h2>🧠 Threat Intelligence</h2><p>Examine threats and important security information across your Discord server.</p></div>
+</div>
+</main>
+
+<section class="content-section" id="commands">
+<h1>All Commands</h1>
+<p>Explore all of the commands currently available through Greg Bot.</p>
+
+<h2 class="command-category">🛡️ Security & Anti-Raid</h2>
+<div class="command"><code>/deep-scan</code><p>Searches through a user's profile to detect potential raider or nuker risks.</p></div>
+<div class="command"><code>/prune-raid</code><p>Selects a timeframe and kicks users who joined within that period.</p></div>
+<div class="command"><code>/security-check</code><p>Checks server security risks and recommends possible changes.</p></div>
+<div class="command"><code>/setup-verification</code><p>Sets up server verification.</p></div>
+<div class="command"><code>/threat-intel</code><p>Displays threat intelligence and other server security information.</p></div>
+<div class="command"><code>/threat-level</code><p>Allows administrators to alter the server security level.</p></div>
+
+<h2 class="command-category">🔒 Server Control</h2>
+<div class="command"><code>/channel lock</code><p>Locks the selected channel.</p></div>
+<div class="command"><code>/freeze</code><p>Freezes all channels.</p></div>
+<div class="command"><code>/lockdown</code><p>Pauses server invites.</p></div>
+<div class="command"><code>/unlockdown</code><p>Resumes server invites.</p></div>
+<div class="command"><code>/slowmode-all</code><p>Activates slowmode across the server for an administrator-selected duration.</p></div>
+
+<h2 class="command-category">🔨 Moderation</h2>
+<div class="command"><code>/discipline-list</code><p>Displays current timeouts and bans.</p></div>
+<div class="command"><code>/infractions</code><p>Examines the selected user's current infractions.</p></div>
+<div class="command"><code>/untimeout</code><p>Immediately removes a user's timeout.</p></div>
+<div class="command"><code>/warn</code><p>Warns the selected user.</p></div>
+
+<h2 class="command-category">⚙️ Automated Systems</h2>
+<div class="command"><code>/automated-systems</code><p>Displays the currently active automated systems.</p></div>
+<div class="command"><code>/filter-curses</code><p>Controls the profanity filter and its intensity.</p></div>
+
+<h2 class="command-category">📊 Monitoring & Information</h2>
+<div class="command"><code>/system-hud</code><p>Displays a system monitoring terminal.</p></div>
+<div class="command"><code>/prefix-commands</code><p>Displays all available "!" prefix commands.</p></div>
+
+<h2 class="command-category">📢 Utility</h2>
+<div class="command"><code>/announce</code><p>Creates an embedded announcement with a selectable color, title, and description.</p></div>
+</section>
+
+<section class="content-section" id="terms">
+<h1>🛡️ Greg Bot Terms of Service</h1>
+<p class="terms-date">Last updated: September 18, 2026</p>
+
+<div class="terms-box">
+
+<h2>1. Authorization & Permission</h2>
+<p>By adding Greg Bot to your Discord server, you grant the bot permission to monitor relevant guild activities, audit logs, public messages, and member profiles as needed for its security and moderation features.</p>
+<p>You confirm that you have the necessary administrative permissions or authority to add and configure Greg Bot within the server.</p>
+
+<h2>2. Security Scanning & Data Processing</h2>
+<p>Greg Bot may process information such as Discord user IDs, message patterns, account creation dates, and other information required for automated server security.</p>
+<p>Security systems may operate in real time. Detected malicious activity may trigger automated actions such as bans, kicks, or timeouts based on the settings configured by server administrators.</p>
+
+<h2>3. Log Retention & Anti-Abuse</h2>
+<p>Security and logging information may be temporarily cached or retained as necessary for the operation of Greg Bot's security systems.</p>
+<p>Greg Bot does not intentionally inspect or store private conversational content outside standard automated security triggers, such as spam detection, blacklisted phrases, or invite links.</p>
+
+<h2>4. Limitations of Service</h2>
+<p>Greg Bot is designed to help protect Discord communities, but no automated security system can guarantee complete protection against every attack or abuse method.</p>
+<p>The service is provided on an "as-is" basis. Greg Bot is not responsible for attacks that bypass its security filters, accidental automated lockouts, or threats that remain undetected or unmitigated.</p>
+
+<a class="agree-btn" href="https://discord.com" target="_blank" rel="noopener noreferrer">I Agree & Continue</a>
+
+</div>
+</section>
+
+<section class="content-section" id="addBot">
+<h1>Add Greg Bot to Your Server</h1>
+<p>Connect Greg Bot to your Discord server and start using its security, moderation, monitoring, and protection features.</p>
+
+<div class="terms-box">
+<p>Click the button below to invite Greg Bot to your Discord server.</p>
+<a class="agree-btn" href="https://tinyurl.com/sjmtw9n4" target="_blank" rel="noopener noreferrer">➕ Add Greg Bot to Your Server</a>
+</div>
+</section>
+
+</div>
+
+<script>
+function openMenu(){document.getElementById("sideMenu").classList.add("open");document.getElementById("overlay").classList.add("show")}
+function closeMenu(){document.getElementById("sideMenu").classList.remove("open");document.getElementById("overlay").classList.remove("show")}
+function hideSections(){["welcome","commands","terms","addBot"].forEach(id=>document.getElementById(id).style.display="none")}
+function showHome(){closeMenu();hideSections();document.getElementById("welcome").style.display="block";window.scrollTo({top:0,behavior:"smooth"})}
+function showCommands(){closeMenu();hideSections();document.getElementById("commands").style.display="block";window.scrollTo({top:0,behavior:"smooth"})}
+function showTerms(){closeMenu();hideSections();document.getElementById("terms").style.display="block";window.scrollTo({top:0,behavior:"smooth"})}
+function showAddBot(){closeMenu();hideSections();document.getElementById("addBot").style.display="block";window.scrollTo({top:0,behavior:"smooth"})}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu()});
+</script>
+
+</body>
+</html>
